@@ -20,6 +20,7 @@ public class AppConfig {
         System.out.println("AppConfig Constructor");
     }
 
+    //bean method
     @Bean
     public BasicDataSource getDataSource(){
         return new BasicDataSource();

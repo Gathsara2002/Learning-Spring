@@ -17,18 +17,34 @@ public class AppInitializer {
         ctx.refresh();
 
         //Context Invocation
+        System.out.println("-------- Context Invocation -------");
+
         PojoTwo bean = ctx.getBean(PojoTwo.class);
         bean.testMethod();
 
         //check singleton
+        System.out.println("-------- check singleton -------");
+
         PojoOne bean1 = ctx.getBean(PojoOne.class);
         PojoOne bean2 = ctx.getBean(PojoOne.class);
         System.out.println(bean1);
         System.out.println(bean2);
 
         //get predefine class bean
+        System.out.println("-------- get predefine class bean -------");
+
         BasicDataSource bean3 = ctx.getBean(BasicDataSource.class);
         System.out.println(bean3);
+
+
+        //Bean Id
+        System.out.println("-------- Bean Id -------");
+
+        Object bean4 = ctx.getBean("pojoOne");
+        System.out.println(bean4);
+
+        Object bean5 = ctx.getBean("getDataSource");
+        System.out.println(bean5);
 
         ctx.close();
     }
