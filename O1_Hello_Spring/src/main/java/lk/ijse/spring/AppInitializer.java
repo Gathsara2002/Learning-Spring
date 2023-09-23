@@ -1,6 +1,7 @@
 package lk.ijse.spring;
 
 import lk.ijse.spring.config.AppConfig;
+import lk.ijse.spring.pojo.PojoTwo;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -12,6 +13,11 @@ public class AppInitializer {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(AppConfig.class);
         ctx.refresh();
+
+        //Context Invocation
+        PojoTwo bean = ctx.getBean(PojoTwo.class);
+        bean.testMethod();
+
         ctx.close();
     }
 }
