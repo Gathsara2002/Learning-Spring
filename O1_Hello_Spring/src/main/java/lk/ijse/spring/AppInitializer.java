@@ -1,6 +1,7 @@
 package lk.ijse.spring;
 
 import lk.ijse.spring.config.AppConfig;
+import lk.ijse.spring.pojo.BasicDataSource;
 import lk.ijse.spring.pojo.PojoOne;
 import lk.ijse.spring.pojo.PojoTwo;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -24,6 +25,10 @@ public class AppInitializer {
         PojoOne bean2 = ctx.getBean(PojoOne.class);
         System.out.println(bean1);
         System.out.println(bean2);
+
+        //get predefine class bean
+        BasicDataSource bean3 = ctx.getBean(BasicDataSource.class);
+        System.out.println(bean3);
 
         ctx.close();
     }
