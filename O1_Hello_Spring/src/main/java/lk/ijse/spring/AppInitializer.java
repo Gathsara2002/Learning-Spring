@@ -46,6 +46,15 @@ public class AppInitializer {
         Object bean5 = ctx.getBean("getDataSource");
         System.out.println(bean5);
 
-        ctx.close();
+
+        //Hooking process
+       /* Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ctx.close();
+            }
+        }));*/
+
+        ctx.registerShutdownHook();
     }
 }
