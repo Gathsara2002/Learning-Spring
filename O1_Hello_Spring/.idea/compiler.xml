@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="O2_Bean_Life_Cycle" />
         <module name="O1_Hello_Spring" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="O1_Hello_Spring" target="8" />
+      <module name="O2_Bean_Life_Cycle" target="8" />
       <module name="O2_Bean_LifeCycle" target="11" />
     </bytecodeTargetLevel>
   </component>
