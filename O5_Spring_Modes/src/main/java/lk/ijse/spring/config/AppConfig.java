@@ -19,7 +19,7 @@ public class AppConfig {
     }
 
     /*this is full mode*/
-    @Bean
+   /* @Bean
     public PojoTwo pojoTwo(){
 
         //inter bean dependency invocation
@@ -33,5 +33,5 @@ public class AppConfig {
     @Bean
     public PojoThree pojoThree(){
         return new PojoThree();
-    }
+    }*/
 }
