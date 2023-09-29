@@ -12,17 +12,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class Boy {
 
-    @Autowired
-            @Qualifier("girlOne")
+    /*property injection*/
+   /* @Autowired
+    @Qualifier("girlOne")
     GoodGirl girl;
 
     public Boy() {
         System.out.println("Boy Instantiated");
     }
 
-    public void chatWithGirl(){
+    public void chatWithGirl() {
         //Girl girl = new Girl();
         girl.chat();
+    }*/
+
+
+    /*constructor injection*/
+    GoodGirl girlOne;
+
+    @Autowired
+    public Boy(GoodGirl girl) {
+        System.out.println("Boy Instantiated");
+        this.girlOne = girl;
+    }
+
+    public void chatWithGirl() {
+        girlOne.chat();
     }
 
 }
