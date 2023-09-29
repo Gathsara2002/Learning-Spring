@@ -40,6 +40,5 @@ public class PojoOne implements BeanNameAware, BeanFactoryAware, ApplicationCont
     @Override
     public void destroy() throws Exception {
         System.out.println("PojoOne - Death");
-        System.out.println("--------------------------------------------------------");
     }
 }
