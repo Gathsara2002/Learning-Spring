@@ -1,5 +1,6 @@
 package lk.ijse.spring.pojo;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
  **/
 
 @Component
+@Primary
 public class GirlOne implements GoodGirl {
     public GirlOne() {
         System.out.println("GirlOne Instantiated");
