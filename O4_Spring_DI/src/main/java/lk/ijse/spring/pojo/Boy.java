@@ -28,7 +28,7 @@ public class Boy {
 
 
     /*constructor injection*/
-    GoodGirl girlOne;
+    /*GoodGirl girlOne;
 
     @Autowired
     public Boy(GoodGirl girl) {
@@ -39,5 +39,21 @@ public class Boy {
     public void chatWithGirl() {
         girlOne.chat();
     }
+*/
 
+    /*setter method injection*/
+    GoodGirl girl;
+
+    public Boy() {
+        System.out.println("Boy Instantiated");
+    }
+
+    @Autowired
+    public void setInjection(GoodGirl girl) {
+        this.girl=girl;
+    }
+
+    public void chatWithGirl() {
+        girl.chat();
+    }
 }
