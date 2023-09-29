@@ -18,6 +18,7 @@ public class AppConfig {
         System.out.println("AppConfig Instantiated");
     }
 
+    /*this is full mode*/
     @Bean
     public PojoTwo pojoTwo(){
 
