@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  **/
 
 @Component
-public class Boy {
+public class Boy implements DI {
 
     /*property injection*/
    /* @Autowired
@@ -25,7 +25,7 @@ public class Boy {
         //Girl girl = new Girl();
         girl.chat();
     }*/
-
+    /*------------------------------------------------------------------*/
 
     /*constructor injection*/
     /*GoodGirl girlOne;
@@ -40,9 +40,10 @@ public class Boy {
         girlOne.chat();
     }
 */
+    /*------------------------------------------------------------------*/
 
     /*setter method injection*/
-    GoodGirl girl;
+    /*GoodGirl girl;
 
     public Boy() {
         System.out.println("Boy Instantiated");
@@ -55,5 +56,24 @@ public class Boy {
 
     public void chatWithGirl() {
         girl.chat();
+    }*/
+    /*------------------------------------------------------------------*/
+
+    /*interface through injection*/
+
+    GoodGirl girl;
+
+    public Boy() {
+        System.out.println("Boy Instantiated");
+    }
+
+    public void chatWithGirl() {
+        girl.chat();
+    }
+
+    @Autowired
+    @Override
+    public void setDI(GoodGirl girl) {
+        this.girl = girl;
     }
 }
