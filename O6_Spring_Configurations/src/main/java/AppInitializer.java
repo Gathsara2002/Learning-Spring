@@ -13,8 +13,8 @@ public class AppInitializer {
 
         //register configuration classes directly
         ctx.register(AppConfig.class);
-        ctx.register(ConfigOne.class);
-        ctx.register(ConfigTwo.class);
+//        ctx.register(ConfigOne.class);
+//        ctx.register(ConfigTwo.class);
 
         ctx.refresh();
         ctx.registerShutdownHook();
