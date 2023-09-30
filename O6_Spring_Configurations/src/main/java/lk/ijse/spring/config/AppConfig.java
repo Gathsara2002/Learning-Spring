@@ -11,8 +11,8 @@ import org.springframework.context.annotation.ImportResource;
  **/
 
 @Configuration
-@ComponentScan(basePackages = "lk.ijse.spring.pojo")
-@Import({ConfigOne.class, ConfigTwo.class})
+@ComponentScan(basePackages = "lk.ijse.spring")
+//@Import({ConfigOne.class, ConfigTwo.class})
 //@ImportResource("classpath: abc.xml")
 //@ImportResource("filepath:abc.xml")
 public class AppConfig {
