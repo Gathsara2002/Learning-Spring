@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Customer {
 
-
+    @Autowired(required = false)
     public Customer(@Value("IJSE") String name) {
         System.out.println("Customer Instantiated " + name);
     }
 
-    @Autowired
-    public Customer(@Value("10") int id) {
-        System.out.println("Customer Instantiated " + id);
+    @Autowired(required = false)
+    public Customer(@Value("10") int id, @Value("true") boolean b) {
+        System.out.println("Customer Instantiated " + id + b);
     }
 }
