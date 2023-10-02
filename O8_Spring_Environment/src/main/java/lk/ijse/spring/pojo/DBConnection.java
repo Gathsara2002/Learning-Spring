@@ -19,9 +19,18 @@ public class DBConnection implements InitializingBean {
     @Value("${USERNAME}")
     private String  userName;
 
+    @Value("${db.user.name}")
+    private String dbUser;
+
+    @Value("${db.user.pass}")
+    private String dbPass;
+
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println(osName);
         System.out.println(userName);
+
+        System.out.println(dbUser);
+        System.out.println(dbPass);
     }
 }
