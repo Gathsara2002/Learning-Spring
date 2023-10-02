@@ -22,16 +22,16 @@ public class AppInitializer {
         Map<String, String> getenv = System.getenv();
         for (String key : getenv.keySet()) {
             String value = getenv.get(key);
-            System.out.println(key + " : " + value);
+            //System.out.println(key + " : " + value);
         }
 
-        System.out.println("------------------------------------------");
+        //System.out.println("------------------------------------------");
 
         //Java environment variables
         Properties properties = System.getProperties();
         for (Object key : properties.keySet()) {
             Object value = properties.get(key);
-            System.out.println(key + " : " + value);
+            //System.out.println(key + " : " + value);
         }
 
     }
