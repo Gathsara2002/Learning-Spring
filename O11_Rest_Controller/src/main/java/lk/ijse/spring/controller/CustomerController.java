@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
 
     @GetMapping
-
     public String getCustomer(){
         return "Hello Spring";
     }
@@ -26,4 +25,10 @@ public class CustomerController {
    /* public boolean getCustomer(){
         return true;
     }*/
+
+    @GetMapping
+    public String test(){
+        return "Hello Spring";
+    }
+
 }
