@@ -16,6 +16,6 @@ public class CustomerController {
 
     @GetMapping
     public ModelAndView test() {
-        return new ModelAndView("/customer");
+        return new ModelAndView("/Customer");
     }
 }
