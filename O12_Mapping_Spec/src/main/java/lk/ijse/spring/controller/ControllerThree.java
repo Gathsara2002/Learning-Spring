@@ -21,10 +21,19 @@ public class ControllerThree {
         return "GetMapping 1 invoked";
     }*/
 
-    @GetMapping(path = "/id/{id}/{name}")
+   /* @GetMapping(path = "/id/{id}/{name}")
     public String testOne(@PathVariable String id,@PathVariable String name) {
+        System.out.println(id);
+        System.out.println(name);
+        return "GetMapping 1 invoked";
+    }*/
+
+    @GetMapping(path = "/ids/{id:[C]{1}[0-9]{3}}/{name}")
+    public String testOne(@PathVariable String id, @PathVariable String name) {
         System.out.println(id);
         System.out.println(name);
         return "GetMapping 1 invoked";
     }
 }
+
+
