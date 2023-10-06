@@ -14,8 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/three")
 public class ControllerThree {
 
-    @GetMapping(path = "/id/{C001}/{Gathsara}")
+     /* @GetMapping(path = "/id/{C001}/{Gathsara}")
     public String testOne(@PathVariable("C001") String id, @PathVariable("Gathsara") String name) {
+        System.out.println(id);
+        System.out.println(name);
+        return "GetMapping 1 invoked";
+    }*/
+
+    @GetMapping(path = "/id/{id}/{name}")
+    public String testOne(@PathVariable String id,@PathVariable String name) {
         System.out.println(id);
         System.out.println(name);
         return "GetMapping 1 invoked";
