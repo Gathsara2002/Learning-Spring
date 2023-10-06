@@ -1,7 +1,6 @@
 package lk.ijse.spring.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author : Gathsara
@@ -11,4 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/one")
 public class ControllerOne {
+
+    @GetMapping
+    public String testOne() {
+        return "GetMapping invoked";
+    }
+
+    @PostMapping
+    public String testTwo() {
+        return "PostMapping invoked";
+    }
+
+    @PutMapping
+    public String testThree() {
+        return "PutMapping invoked";
+    }
+
+    @DeleteMapping
+    public String testFour() {
+        return "DeleteMapping invoked";
+    }
 }
