@@ -34,4 +34,9 @@ public class ControllerFour {
     public String testFour() {
         return "GetMapping 4 invoked";
     }
+
+    @GetMapping(path = "/a/**/z")
+    public String testFive() {
+        return "GetMapping 5 invoked";
+    }
 }
