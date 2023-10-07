@@ -14,14 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/four")
 public class ControllerFour {
 
-    @GetMapping(path = "/{ab?d}")
-    public String testOne(@PathVariable("ab?d") String s) {
-        System.out.println(s);
+    @GetMapping(path = "/ab?d")
+    public String testOne() {
         return "GetMapping 1 invoked";
     }
 
     @GetMapping(path = "/ab??d")
     public String testTwo() {
         return "GetMapping 2 invoked";
+    }
+
+    @GetMapping(path = "/{ab?d}")
+    public String testThree(@PathVariable("ab?d") String s) {
+        System.out.println(s);
+        return "GetMapping 3 invoked";
+    }
+
+    @GetMapping(path = "/a/*")
+    public String testFour() {
+        return "GetMapping 4 invoked";
     }
 }
