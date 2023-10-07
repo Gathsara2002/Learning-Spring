@@ -17,4 +17,9 @@ public class ControllerFour {
     public String testOne() {
         return "GetMapping 1 invoked";
     }
+
+    @GetMapping(path = "/ab??d")
+    public String testTwo() {
+        return "GetMapping 2 invoked";
+    }
 }
