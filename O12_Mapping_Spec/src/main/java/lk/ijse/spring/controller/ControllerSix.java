@@ -1,8 +1,10 @@
 package lk.ijse.spring.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 /**
  * @author : Gathsara
@@ -18,8 +20,13 @@ public class ControllerSix {
         return "GetMapping 1 invoked";
     }
 
-    @GetMapping
+    /*@GetMapping
     public String testTwo() {
         return "GetMapping 2 invoked";
+    }*/
+
+    @GetMapping(produces = {MediaType.TEXT_HTML_VALUE})
+    public String testThree() {
+        return "GetMapping 3 invoked";
     }
 }
