@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/Back_End_war/";
+const BASE_URL = "http://localhost:8080/O12_Mapping_Spec_war/";
 
 //load all existing customers
 getAllCustomers();
