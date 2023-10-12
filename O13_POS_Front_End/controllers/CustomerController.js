@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/jpa/";
+const BASE_URL = "http://localhost:8080/Back_End_war/";
 
 //load all existing customers
 getAllCustomers();
@@ -50,8 +50,6 @@ $("#btnCusDelete").click(function () {
             alert("Customer Not Removed..!");
         }
     }
-
-
 });
 
 //update  btn event
@@ -69,17 +67,14 @@ $("#btn-clear1").click(function () {
 
 // CRUD operation Functions
 function saveCustomer() {
-    let customerID = $("#txtCustomerID").val();
+    // let customerID = $("#txtCustomerID").val();
     //check customer is exists or not?
-    if (searchCustomer(customerID.trim()) == undefined) {
+    /*if (searchCustomer(customerID.trim()) == undefined) {
 
         let formData = $("#customerForm").serialize();
         $.ajax({
             url: BASE_URL + "customer",
             method: "post",
-            headers:{
-                Auth:"user=admin,pass=admin"
-            },
             data: formData,
             success: function (res) {
                 alert(res.message);
@@ -95,7 +90,22 @@ function saveCustomer() {
     } else {
         alert("Customer already exits.!");
         clearCustomerInputFields();
-    }
+    }*/
+
+    let formData = $("#customerForm").serialize();
+    $.ajax({
+        url: BASE_URL + "customer",
+        method: "post",
+        data: formData,
+        success: function (res) {
+            alert(res.message);
+            clearCustomerInputFields();
+            getAllCustomers();
+        },
+        error: function (error) {
+            alert(error.responseJSON.message);
+        }
+    });
 }
 
 function getAllCustomers() {
@@ -105,9 +115,6 @@ function getAllCustomers() {
     $.ajax({
         url: BASE_URL + 'customer',
         dataType: "json",
-        headers:{
-            Auth:"user=admin,pass=admin"
-        },
         success: function (response) {
             let customers = response.data;
             for (let i in customers) {
@@ -129,11 +136,8 @@ function getAllCustomers() {
 
 function deleteCustomer(id) {
     $.ajax({
-        url: BASE_URL + 'customer?cusID=' + id,
-        method: 'delete',
-        headers:{
-            Auth:"user=admin,pass=admin"
-        },
+        url: BASE_URL + 'customer?id=' + id,
+        method: 'DELETE',
         success: function (resp) {
             alert(resp.message);
             getAllCustomers();
@@ -150,11 +154,8 @@ function deleteCustomer(id) {
 function searchCustomer(id) {
     let resp = false;
     $.ajax({
-        url: BASE_URL + 'customer',
+        url: BASE_URL + 'customer?id=' + id,
         dataType: "json",
-        headers:{
-            Auth:"user=admin,pass=admin"
-        },
         async: false,
         success: function (response) {
             let customers = response.data;
@@ -166,7 +167,7 @@ function searchCustomer(id) {
 
         },
         error: function (error) {
-            resp=false;
+            resp = false;
             alert(error.responseJSON.message);
         }
     });
@@ -192,10 +193,7 @@ function updateCustomer(id) {
 
             $.ajax({
                 url: BASE_URL + 'customer',
-                method: 'put',
-                headers:{
-                    Auth:"user=admin,pass=admin"
-                },
+                method: 'PUT',
                 contentType: "application/json",
                 data: JSON.stringify(customer),
                 success: function (resp) {

@@ -3,7 +3,7 @@ getAllItems();
 
 //add item event
 $("#btnItem").click(function () {
-    if (checkAllItems()){
+    if (checkAllItems()) {
         saveItem();
     }
 
@@ -63,10 +63,9 @@ $("#btn-clear").click(function () {
 });
 
 
-
 // CRUD operation Functions
 function saveItem() {
-    let itemCode = $("#itemCode").val();
+    /*let itemCode = $("#itemCode").val();
     //check item is exists or not?
     if (searchItem(itemCode.trim()) == undefined) {
 
@@ -76,9 +75,6 @@ function saveItem() {
             url: BASE_URL + "item",
             method: "post",
             data: itemFormData,
-            headers:{
-                Auth:"user=admin,pass=admin"
-            },
             success: function (res) {
                 alert(res.message);
                 clearItemInputFields();
@@ -90,12 +86,25 @@ function saveItem() {
         });
 
 
-
-
     } else {
         alert("Item already exits.!");
         clearItemInputFields();
-    }
+    }*/
+
+    let itemFormData = $("#itemForm").serialize();
+    $.ajax({
+        url: BASE_URL + "item",
+        method: "post",
+        data: itemFormData,
+        success: function (res) {
+            alert(res.message);
+            clearItemInputFields();
+            getAllItems();
+        },
+        error: function (error) {
+            alert(error.responseJSON.message);
+        }
+    });
 }
 
 function getAllItems() {
@@ -103,18 +112,15 @@ function getAllItems() {
     $("#tblItem").empty();
 
     $.ajax({
-        url: BASE_URL+'item',
+        url: BASE_URL + 'item',
         dataType: "json",
-        headers:{
-            Auth:"user=admin,pass=admin"
-        },
         success: function (response) {
             let items = response.data;
             for (let i in items) {
                 let item = items[i];
                 let code = item.code;
                 let description = item.description;
-                let qtyOnHand = item.qty;
+                let qtyOnHand = item.qtyOnHand;
                 let unitPrice = item.unitPrice;
                 let row = `<tr><td>${code}</td><td>${description}</td><td>${qtyOnHand}</td><td>${unitPrice}</td></tr>`;
                 $("#tblItem").append(row);
@@ -127,15 +133,10 @@ function getAllItems() {
     });
 }
 
-
-
 function deleteItem(code) {
     $.ajax({
         url: BASE_URL + 'item?code=' + code,
         method: 'delete',
-        headers:{
-            Auth:"user=admin,pass=admin"
-        },
         success: function (resp) {
             alert(resp.message);
             getAllItems();
@@ -152,7 +153,7 @@ function deleteItem(code) {
 function searchItem(code) {
     let resp = false;
     $.ajax({
-        url: BASE_URL + 'item',
+        url: BASE_URL + 'item?code=' + code,
         dataType: "json",
         async: false,
         success: function (response) {
@@ -165,7 +166,7 @@ function searchItem(code) {
 
         },
         error: function (error) {
-            resp=false;
+            resp = false;
             alert(error.responseJSON.message);
         }
     });
@@ -185,7 +186,7 @@ function updateItem(code) {
             let itemQty = $("#itemQty").val();
             let itemPrice = $("#itemPrice").val();
 
-            item.code=code;
+            item.code = code;
             item.description = itemName;
             item.qtyOnHand = itemQty;
             item.unitPrice = itemPrice;
@@ -193,9 +194,6 @@ function updateItem(code) {
             $.ajax({
                 url: BASE_URL + 'item',
                 method: 'put',
-                headers:{
-                    Auth:"user=admin,pass=admin"
-                },
                 contentType: "application/json",
                 data: JSON.stringify(item),
                 success: function (resp) {
