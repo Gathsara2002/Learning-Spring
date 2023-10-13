@@ -1,6 +1,7 @@
 package lk.ijse.spring.controller;
 
 import lk.ijse.spring.dto.CustomerDTO;
+import lk.ijse.spring.util.ResponseUtil;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,18 +16,28 @@ import java.util.ArrayList;
 @CrossOrigin
 public class CustomerController {
 
-    @PostMapping
-    public void saveCustomer(CustomerDTO dto) {
-        System.out.println("Testing" + " - " + dto.toString());
+    @GetMapping
+    public ResponseUtil getAllCustomer() {
+        ArrayList<CustomerDTO> list = new ArrayList<>();
+        list.add(new CustomerDTO("C001", "Gathsara", "Ambalangoda", 1000000000));
+        list.add(new CustomerDTO("C002", "Chavindu", "Ambalangoda", 50000));
+        list.add(new CustomerDTO("C003", "Hirusha", "Galle", 200000));
+        return new ResponseUtil("OK", "Successfully Loaded", list);
+    }
 
+    @PostMapping
+    public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO dto) {
+        System.out.println(dto.toString());
+        return new ResponseUtil("OK", "Successfully Added", dto);
+    }
+
+    @DeleteMapping(params = "id")
+    public ResponseUtil deleteCustomer(@RequestParam String id) {
+        return new ResponseUtil("OK", "Successfully Deleted", id);
     }
 
     @PutMapping
-    public ArrayList<CustomerDTO> updateCustomer(@RequestBody CustomerDTO dto) {
-        ArrayList<CustomerDTO> list = new ArrayList<>();
-        list.add(dto);
-        list.add(dto);
-        list.add(dto);
-        return list;
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO dto) {
+        return new ResponseUtil("OK", "Successfully Updated", dto);
     }
 }
