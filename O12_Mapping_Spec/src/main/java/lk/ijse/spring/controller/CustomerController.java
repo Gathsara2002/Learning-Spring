@@ -2,6 +2,7 @@ package lk.ijse.spring.controller;
 
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.util.ResponseUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -27,7 +28,9 @@ public class CustomerController {
 
     @PostMapping
     public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO dto) {
-        System.out.println(dto.toString());
+        if (dto.getId().equals("C001")) {
+            throw new RuntimeException("Customer Already exists");
+        }
         return new ResponseUtil("OK", "Successfully Added", dto);
     }
 
