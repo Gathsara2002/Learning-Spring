@@ -7,16 +7,22 @@ import java.util.ArrayList;
 
 /**
  * @author : Gathsara
- * created : 10/12/2023 -- 9:19 PM
+ * created : 10/13/2023 -- 5:43 PM
  **/
 
 @RestController
-//@RequestMapping("/customer")
+@RequestMapping("/customer")
 @CrossOrigin
-public class ControllerEight {
+public class CustomerController {
+
+    @PostMapping
+    public void saveCustomer(CustomerDTO dto) {
+        System.out.println("Testing" + " - " + dto.toString());
+
+    }
 
     @PutMapping
-    public ArrayList<CustomerDTO> saveCustomer(@RequestBody CustomerDTO dto) {
+    public ArrayList<CustomerDTO> updateCustomer(@RequestBody CustomerDTO dto) {
         ArrayList<CustomerDTO> list = new ArrayList<>();
         list.add(dto);
         list.add(dto);
