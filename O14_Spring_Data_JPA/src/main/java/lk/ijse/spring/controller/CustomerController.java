@@ -5,10 +5,10 @@ import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,11 +24,16 @@ public class CustomerController {
     @Autowired
     private CustomerRepo customerRepo;
 
+    @Autowired
+    ModelMapper mapper;
+
     @GetMapping
     public ResponseUtil getAllCustomer() {
 
         List<Customer> all = customerRepo.findAll();
-        return new ResponseUtil("OK", "Successfully Loaded", all);
+        CustomerDTO list = mapper.map(all, new TypeToken<List<CustomerDTO>>() {
+        }.getType());
+        return new ResponseUtil("OK", "Successfully Loaded", list);
     }
 
     @PostMapping
