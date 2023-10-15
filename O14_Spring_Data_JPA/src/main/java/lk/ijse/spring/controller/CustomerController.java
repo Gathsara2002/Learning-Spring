@@ -33,10 +33,10 @@ public class CustomerController {
 
     @PostMapping
     public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO dto) {
-        if (dto.getId().equals("C001")) {
-            throw new RuntimeException("Customer Already exists");
+        boolean exists = customerRepo.existsById(dto.getId());
+        if (exists) {
+            throw new RuntimeException(dto.getId() + " Customer Already exists");
         }
-
         Customer customer = new Customer(dto.getId(), dto.getName(), dto.getAddress(), dto.getSalary());
         customerRepo.save(customer);
         return new ResponseUtil("OK", "Successfully Added", dto);
@@ -50,6 +50,10 @@ public class CustomerController {
 
     @PutMapping
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO dto) {
+        boolean exists = customerRepo.existsById(dto.getId());
+        if (!exists) {
+            throw new RuntimeException(dto.getId() + " Customer not exists");
+        }
         Customer customer = new Customer(dto.getId(), dto.getName(), dto.getAddress(), dto.getSalary());
         customerRepo.save(customer);
         return new ResponseUtil("OK", "Successfully Updated", dto);
