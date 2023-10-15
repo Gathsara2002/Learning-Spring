@@ -44,6 +44,10 @@ public class CustomerController {
 
     @DeleteMapping(params = "id")
     public ResponseUtil deleteCustomer(@RequestParam String id) {
+        boolean exists = customerRepo.existsById(id);
+        if (!exists) {
+            throw new RuntimeException(id + " Customer not exists");
+        }
         customerRepo.deleteById(id);
         return new ResponseUtil("OK", "Successfully Deleted", id);
     }
